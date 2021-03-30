@@ -22,7 +22,7 @@
  	</update>
  	
  	<select id="getListWithPaging" resultType="org.zerock.domain.ReplyVO">
- 		select rno, bno, replyer, replyDate, updateDate from springex.tbl_reply
+ 		select rno, bno, reply, replyer, replyDate, updateDate from springex.tbl_reply
  		where bno = #{bno}
  		order by rno asc
  	</select>

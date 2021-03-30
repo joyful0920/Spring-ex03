@@ -37,13 +37,12 @@ public class ReplyMapperTests {
 		
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			
-			
 			ReplyVO vo = new ReplyVO();
 			
 			// 게시물의 번호
 			vo.setBno(bnoArr[i % 5]);
 			vo.setReply("댓글 테스트" + i);
-			vo.setReplyer("replyer" + 1);
+			vo.setReplyer("replyer" + i);
 			
 			mapper.insert(vo);
 		});
@@ -64,7 +63,7 @@ public class ReplyMapperTests {
 		
 		Long targetRno = 1L;
 		
-	mapper.delete(targetRno);
+		mapper.delete(targetRno);
 	}
 	
 	@Test
