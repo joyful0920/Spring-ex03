@@ -121,7 +121,12 @@
 			reply : "Modified Reply...."
 		}, function(result)	{
 			alert("수정 완료...");
-		})
+		});
+
+		// for get Test
+		replyService.get(10, function(data){
+			console.log(data);
+		});
 		
 		</script>
 		
