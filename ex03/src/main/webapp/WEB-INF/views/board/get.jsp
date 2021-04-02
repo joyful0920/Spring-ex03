@@ -76,6 +76,55 @@
 		  </div>
 		</div>
 		
+		<script type="text/javascript" src="/resources/js/reply.js"></script>
+		
+		<script type="text/javascript">
+		
+		console.log("============");
+		console.log("JS TEST");
+		
+		var bnoValue = '<c:out value="${board.bno}"/>';
+		
+		// for replyService add test
+		replyService.add(
+				{reply:"JS Test", replyer:"tester", bno:bnoValue}
+				,
+				function(result){
+					alert("RESULT: " + result);
+				}
+		);
+		
+		// for replyList Test
+		replyService.getList({bno:bnoValue, page:1}, function(list) {
+
+			for(var i = 0, len = list.length||0; i < len; i++) {
+				console.log(list[i]);
+			}
+		});
+
+		// for delete Test
+		replyService.remove(28, function(count) {
+
+			console.log(count);
+
+			if (count === "success") {
+				alert("REMOVED");
+			}
+		}, function(err) {
+			alert('ERROR...');
+		});
+
+		// for update Test
+		replyService.update({
+			rno : 23,
+			bno : bnoValue,
+			reply : "Modified Reply...."
+		}, function(result)	{
+			alert("수정 완료...");
+		})
+		
+		</script>
+		
 		<script type="text/javascript">
 		$(document).ready(function() {
 		
