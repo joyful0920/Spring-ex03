@@ -11,7 +11,7 @@
 	</select>
 
 	<select id="getListWithPaging" resultType="org.zerock.domain.BoardVO">
-		SELECT (@R:=@R+1) rn, tbl.bno, tbl.title, tbl.content, tbl.writer, tbl.regdate, tbl.updatedate
+		SELECT (@R:=@R+1) rn, tbl.bno, tbl.title, tbl.content, tbl.writer, tbl.regdate, tbl.updatedate, tbl.replyCnt
 		FROM springex.tbl_board tbl, (SELECT @R:=#{skipCount}) R
 		<trim prefix="WHERE (" suffix=") " prefixOverrides="OR">
 			<foreach item='type' collection="typeArr">
@@ -85,4 +85,8 @@
 		</trim>
 		bno > 0
 	</select>
+	
+	<update id="updateReplyCnt">
+		update springex.tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+	</update>
 </mapper>
